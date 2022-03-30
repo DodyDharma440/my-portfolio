@@ -35,11 +35,19 @@ const theme: DefaultTheme = {
     dmSans: "'DM Sans', sans-serif",
   },
   fontSize: {
-    xs: "0.2rem",
-    sm: "0.5rem",
+    xs: "0.6rem",
+    sm: "0.8rem",
     md: "1rem",
-    lg: "2rem",
-    xl: "3rem",
+    lg: "1.5rem",
+    xl: "1.8rem",
+  },
+  borderRadius: {
+    xs: "2px",
+    sm: "4px",
+    md: "8px",
+    lg: "14px",
+    xl: "20px",
+    full: "9999px",
   },
   breakpoints: {
     xs: "320px",
@@ -61,6 +69,13 @@ const theme: DefaultTheme = {
       lg: "(min-width: 992px)",
       xl: "(min-width: 1200px)",
     },
+  },
+  spacing: {
+    xs: "8px",
+    sm: "10px",
+    md: "14px",
+    lg: "20px",
+    xl: "28px",
   },
 };
 

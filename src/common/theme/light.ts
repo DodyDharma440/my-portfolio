@@ -4,8 +4,8 @@ const lightTheme = extendTheme({
   colorScheme: "light",
   colors: {
     background: {
-      primary: "#fff",
-      secondary: "#ddd",
+      primary: "#F0FBFE",
+      secondary: "#f3fbfe",
       tertiary: "#fff",
     },
     text: {

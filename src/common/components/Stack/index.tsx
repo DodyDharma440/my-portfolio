@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { Size } from "styled-components";
 
 export type StackProps = {
   direction?: "row" | "column";
@@ -13,7 +13,7 @@ export type StackProps = {
     | "space-evenly"
     | "stretch";
   align?: "center" | "flex-start" | "flex-end" | "start" | "end" | "stretch";
-  spacing?: number;
+  spacing?: number | keyof Size;
 };
 
 const Stack = styled.div<StackProps>`
@@ -21,14 +21,16 @@ const Stack = styled.div<StackProps>`
   flex-direction: ${(p) => p.direction};
   justify-content: ${(p) => p.justify};
   align-items: ${(p) => p.align};
-  gap: ${(p) => p.spacing}px;
+  gap: ${(p) =>
+    typeof p.spacing === "number"
+      ? `${p.spacing}px`
+      : p.theme.spacing[p.spacing || "xs"]};
 `;
 
 Stack.defaultProps = {
   direction: "row",
   justify: "flex-start",
   align: "center",
-  spacing: 10,
 };
 
 export default Stack;

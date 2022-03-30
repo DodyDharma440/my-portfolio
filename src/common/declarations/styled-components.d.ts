@@ -43,10 +43,12 @@ declare module "styled-components" {
     };
     fonts: Record<string, string>;
     fontSize: Size;
+    borderRadius: Size & { full: string };
     breakpoints: Size & {
       up: Size;
       down: Size;
     };
+    spacing: Size;
   }
 
   export interface ThemeSettings

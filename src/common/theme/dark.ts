@@ -4,9 +4,9 @@ const darkTheme = extendTheme({
   colorScheme: "dark",
   colors: {
     background: {
-      primary: "#000",
-      secondary: "#222",
-      tertiary: "#000",
+      primary: "#1A202C",
+      secondary: "#12161e",
+      tertiary: "#171923",
     },
     text: {
       primary: "#fff",
