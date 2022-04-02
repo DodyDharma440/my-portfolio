@@ -1,4 +1,4 @@
-import { Color } from "styled-components";
+import { ColorPalettes } from "styled-components";
 
 //template
 // color: {
@@ -8,7 +8,7 @@ import { Color } from "styled-components";
 //   contrastText: "#",
 // }
 
-const colors: Record<string, Color & { contrastText: string }> = {
+const colors: ColorPalettes = {
   red: {
     main: "#FF1D1D",
     light: "#ff4a4a",

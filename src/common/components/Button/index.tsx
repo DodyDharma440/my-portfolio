@@ -1,7 +1,7 @@
 import styled, { Size, DefaultTheme } from "styled-components";
 
 export type ButtonProps = {
-  color?: "primary" | "secondary";
+  color?: "primary" | "secondary" | "transparent";
   size?: keyof Size;
   rounded?: keyof Size | "full";
 };
@@ -19,9 +19,15 @@ const paddingSize = (theme: DefaultTheme, size: keyof Size): string => {
 };
 
 const Button = styled.button<ButtonProps>`
-  background-color: ${(p) => p.theme.colors[p.color || "primary"].main};
+  background-color: ${(p) =>
+    p.color !== "transparent"
+      ? p.theme.colors[p.color || "primary"].main
+      : "transparent"};
   transition: background-color 0.1s;
-  color: ${(p) => p.theme.colors[p.color || "primary"].contrastText};
+  color: ${(p) =>
+    p.color !== "transparent"
+      ? p.theme.colors[p.color || "primary"].contrastText
+      : p.theme.colors.text.primary};
   padding: ${(p) => paddingSize(p.theme, p.size || "sm")};
   cursor: pointer;
   border: 0;
@@ -34,7 +40,10 @@ const Button = styled.button<ButtonProps>`
     transform: translateY(1px);
   }
   &:hover {
-    background-color: ${(p) => p.theme.colors[p.color || "primary"].dark};
+    background-color: ${(p) =>
+      p.color !== "transparent"
+        ? p.theme.colors[p.color || "primary"].dark
+        : "transparent"};
   }
 `;
 

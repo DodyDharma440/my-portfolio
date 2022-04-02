@@ -1,15 +1,22 @@
+import theme from "common/theme/base-theme";
 import styled, { Size } from "styled-components";
 
 export type IconButtonProps = {
-  color?: "primary" | "secondary";
+  color?: "primary" | "secondary" | "transparent";
   size?: keyof Size;
   rounded?: keyof Size | "full";
 };
 
 const IconButton = styled.button<IconButtonProps>`
-  background-color: ${(p) => p.theme.colors[p.color || "primary"].main};
+  background-color: ${(p) =>
+    p.color !== "transparent"
+      ? p.theme.colors[p.color || "primary"].main
+      : "transparent"};
   transition: background-color 0.1s;
-  color: ${(p) => p.theme.colors[p.color || "primary"].contrastText};
+  color: ${(p) =>
+    p.color !== "transparent"
+      ? p.theme.colors[p.color || "primary"].contrastText
+      : theme.colors.text.primary};
   padding: ${(p) => p.theme.spacing[p.size || "sm"]};
   cursor: pointer;
   border: 0;
@@ -22,7 +29,10 @@ const IconButton = styled.button<IconButtonProps>`
     transform: translateY(1px);
   }
   &:hover {
-    background-color: ${(p) => p.theme.colors[p.color || "primary"].dark};
+    background-color: ${(p) =>
+      p.color !== "transparent"
+        ? p.theme.colors[p.color || "primary"].dark
+        : "transparent"};
   }
 `;
 

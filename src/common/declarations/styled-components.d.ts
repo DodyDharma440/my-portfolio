@@ -7,6 +7,8 @@ declare module "styled-components" {
     dark: string;
   }
 
+  type ColorPalettes = Record<string, Color & { contrastText: string }>;
+
   interface Size {
     xs: string;
     sm: string;
@@ -40,6 +42,7 @@ declare module "styled-components" {
         secondary: string;
         tertiary: string;
       };
+      palettes: ColorPalettes;
     };
     fonts: Record<string, string>;
     fontSize: Size;

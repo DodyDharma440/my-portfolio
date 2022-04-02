@@ -1,4 +1,5 @@
 import { DefaultTheme } from "styled-components";
+import colors from "./colors";
 
 const theme: DefaultTheme = {
   colorScheme: "light",
@@ -28,6 +29,7 @@ const theme: DefaultTheme = {
       secondary: "",
       tertiary: "",
     },
+    palettes: colors,
   },
   fonts: {
     poppins: "'Poppins', sans-serif",

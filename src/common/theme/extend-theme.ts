@@ -19,6 +19,9 @@ const generateColor = (
       ...baseTheme.colors.text,
       ...extendedTheme.colors?.text,
     },
+    palettes: {
+      ...baseTheme.colors.palettes,
+    },
   };
 };
 

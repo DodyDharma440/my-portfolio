@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import { Navbar } from "common/components";
+import { Navbar } from "modules/layout/components";
 
 export const Content = styled.div`
   flex: 1;

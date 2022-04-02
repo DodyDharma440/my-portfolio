@@ -14,6 +14,7 @@ export type StackProps = {
     | "stretch";
   align?: "center" | "flex-start" | "flex-end" | "start" | "end" | "stretch";
   spacing?: number | keyof Size;
+  noWrap?: boolean;
 };
 
 const Stack = styled.div<StackProps>`
@@ -25,6 +26,7 @@ const Stack = styled.div<StackProps>`
     typeof p.spacing === "number"
       ? `${p.spacing}px`
       : p.theme.spacing[p.spacing || "xs"]};
+  flex-wrap: ${(p) => (p.noWrap ? "nowrap" : "wrap")};
 `;
 
 Stack.defaultProps = {

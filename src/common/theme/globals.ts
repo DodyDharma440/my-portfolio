@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     *{
         font-family: ${(p) => p.theme.fonts[p.theme.font]};
+        line-height: normal;
     }
     html {
       scroll-behavior: smooth;
