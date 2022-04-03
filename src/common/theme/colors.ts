@@ -10,46 +10,52 @@ import { ColorPalettes } from "styled-components";
 
 const colors: ColorPalettes = {
   red: {
-    main: "#FF1D1D",
-    light: "#ff4a4a",
-    dark: "#b21414",
+    main: "#de2828",
+    light: "#e45353",
+    dark: "#9b1c1c",
     contrastText: "#fff",
   },
-  blue: {
-    main: "#5072FB",
-    light: "#738efb",
-    dark: "#384faf",
-    contrastText: "#fff",
-  },
-  lightBlue: {
-    main: "#00b0ff",
-    light: "#33bfff",
-    dark: "#007bb2",
+  lightRed: {
+    main: "#F4DFDF",
+    light: "#f6e5e5",
+    dark: "#aa9c9c",
     contrastText: "#000",
   },
-  cyan: {
-    main: "#52CFDF",
-    light: "#74d8e5",
-    dark: "#39909c",
+  blue: {
+    main: "#3781f1",
+    light: "#5f9af3",
+    dark: "#265aa8",
+    contrastText: "#fff",
+  },
+  skyBlue: {
+    main: "#00AAF2",
+    light: "#33bbf4",
+    dark: "#0076a9",
+    contrastText: "#000",
+  },
+  lightBlue: {
+    main: "#52CFFF",
+    light: "#74d8ff",
+    dark: "#3990b2",
     contrastText: "#000",
   },
   purple: {
-    main: "#9c27b0",
-    light: "#af52bf",
-    dark: "#6d1b7b",
+    main: "#8739F9",
+    light: "#9f60fa",
+    dark: "#5e27ae",
     contrastText: "#eee",
   },
-  lightPurple: {
-    main: "#a056e7",
-    light: "#b377eb",
-    dark: "#703ca1",
-    contrastText: "#fff",
+  indigo: {
+    main: "#475be3",
+    light: "#6b7be8",
+    dark: "#313f9e",
+    contrastText: "#eee",
   },
-  yellow: {
-    main: "#ffea00",
-    light: "#ffee33",
-    dark: "#b2a300",
-    contrastText: "#000",
+  bronze: {
+    main: "#A59268",
+    light: "#b7a786",
+    dark: "#736648",
+    contrastText: "#fff",
   },
   orange: {
     main: "#ff9100",
@@ -57,16 +63,16 @@ const colors: ColorPalettes = {
     dark: "#b26500",
     contrastText: "#000",
   },
-  green: {
-    main: "#00e676",
-    light: "#33eb91",
-    dark: "#00a152",
+  teal: {
+    main: "#18b984",
+    light: "#46c79c",
+    dark: "#10815c",
     contrastText: "#000",
   },
-  teal: {
-    main: "#1de9b6",
-    light: "#4aedc4",
-    dark: "#14a37f",
+  lightTeal: {
+    main: "#5fe7bb",
+    light: "#7febc8",
+    dark: "#42a182",
     contrastText: "#000",
   },
   lightGray: {
@@ -82,10 +88,10 @@ const colors: ColorPalettes = {
     contrastText: "#000",
   },
   darkGray: {
-    main: "#A3B0BC",
-    light: "#b5bfc9",
-    dark: "#727b83",
-    contrastText: "#000",
+    main: "#4f565b",
+    light: "#72777b",
+    dark: "#373c3f",
+    contrastText: "#fff",
   },
   dark: {
     main: "#2D3748",

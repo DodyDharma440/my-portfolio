@@ -7,9 +7,27 @@ declare module "styled-components" {
     dark: string;
   }
 
-  type ColorPalettes = Record<string, Color & { contrastText: string }>;
+  export type ColorPaletteKeys =
+    | "red"
+    | "lightRed"
+    | "blue"
+    | "skyBlue"
+    | "lightBlue"
+    | "purple"
+    | "indigo"
+    | "bronze"
+    | "orange"
+    | "teal"
+    | "lightTeal"
+    | "lightGray"
+    | "white"
+    | "darkGray"
+    | "dark"
+    | "black";
 
-  interface Size {
+  export type ColorPalettes = Record<string, Color & { contrastText: string }>;
+
+  export interface Size {
     xs: string;
     sm: string;
     md: string;

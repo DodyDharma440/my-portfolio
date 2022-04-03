@@ -3,14 +3,15 @@ import { MoonIcon, SunIcon } from "@heroicons/react/outline";
 import { Drawer, Divider, Stack, Icon } from "common/components";
 import { useThemeSettings } from "common/hooks";
 import colors from "common/theme/colors";
+import { themeOptions } from "modules/layout/constants";
 
 const SettingTitle = styled.p`
   margin-bottom: ${(p) => p.theme.spacing.sm};
-  font-size: ${(p) => p.theme.fontSize.sm};
+  font-size: ${(p) => p.theme.fontSize.md};
 `;
 
 const SettingGroup = styled.div`
-  margin-bottom: ${(p) => p.theme.spacing.md};
+  margin-bottom: ${(p) => p.theme.spacing.xl};
 `;
 
 const InnerDrawer = styled.div`
@@ -51,26 +52,36 @@ const ColorSchemeCard = styled.div<ColorSchemeCardProps>`
 const ColorRadioOutline = styled.div<{ isActive: boolean }>`
   padding: 2px;
   background: transparent;
-  border-radius: 50%;
+  border-radius: 20px;
   border: 2px solid;
   border-color: ${(p) =>
-    p.isActive
-      ? p.theme.colorScheme === "dark"
-        ? p.theme.colors.palettes.darkGray.dark
-        : p.theme.colors.palettes.darkGray.dark
-      : "transparent"};
+    p.isActive ? p.theme.colors.primary.main : "transparent"};
 `;
 
 type ColorRadioProps = {
-  color: string;
+  primary: string;
+  secondary: string;
+  onClick: () => void;
 };
 
-const ColorRadio = styled.div<ColorRadioProps>`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+const InnerColorRadio = styled.div<{ color: string }>`
+  background: ${(p) => p.theme.colors.palettes[p.color].main};
+  width: 50%;
+`;
+
+const ColorRadioStyle = styled.div`
+  width: 30px;
+  height: 30px;
   cursor: pointer;
-  background: ${(p) => p.color};
+  display: flex;
+  & div:nth-child(1) {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  & div:nth-last-child(1) {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 `;
 
 const FontRadioOutline = styled.div<{ isActive: boolean }>`
@@ -80,11 +91,7 @@ const FontRadioOutline = styled.div<{ isActive: boolean }>`
   border: 1px solid;
   border-color: #000;
   border-color: ${(p) =>
-    p.isActive
-      ? p.theme.colorScheme === "dark"
-        ? p.theme.colors.palettes.darkGray.dark
-        : p.theme.colors.palettes.darkGray.dark
-      : "transparent"};
+    p.isActive ? p.theme.colors.primary.main : "transparent"};
 `;
 
 const FontRadio = styled.div`
@@ -92,15 +99,21 @@ const FontRadio = styled.div`
   height: 10px;
   border-radius: 50%;
   cursor: pointer;
-  background-color: ${(p) =>
-    p.theme.colorScheme === "dark"
-      ? p.theme.colors.palettes.darkGray.dark
-      : p.theme.colors.palettes.darkGray.dark};
+  background-color: ${(p) => p.theme.colors.primary.main};
 `;
 
-const FontOption = styled.p<{ family: string }>`
-  font-family: ${(p) => p.family};
-`;
+const ColorRadio: React.FC<ColorRadioProps> = ({
+  primary,
+  secondary,
+  onClick,
+}) => {
+  return (
+    <ColorRadioStyle onClick={onClick}>
+      <InnerColorRadio color={primary} />
+      <InnerColorRadio color={secondary} />
+    </ColorRadioStyle>
+  );
+};
 
 export type ThemeSettingsProps = {
   isOpen: boolean;
@@ -117,12 +130,8 @@ const ThemeSettings: React.FC<ThemeSettingsProps> = ({ isOpen, onClose }) => {
     font,
   } = useThemeSettings();
 
-  const handleChangePrimary = (value: string) => {
-    setColorType(value, secondaryColor);
-  };
-
-  const handleChangeSecondary = (value: string) => {
-    setColorType(primaryColor, value);
+  const handleChangeColor = (primary: string, secondary: string) => {
+    setColorType(primary, secondary);
   };
 
   return (
@@ -148,35 +157,21 @@ const ThemeSettings: React.FC<ThemeSettingsProps> = ({ isOpen, onClose }) => {
           </Stack>
         </SettingGroup>
         <SettingGroup>
-          <SettingTitle>Warna Primer</SettingTitle>
+          <SettingTitle>Palette</SettingTitle>
           <Stack>
-            {Object.entries(colors).map((color, index) => {
+            {themeOptions.map((opt, index) => {
+              const isActive =
+                primaryColor === opt.primary &&
+                secondaryColor === opt.secondary;
+
               return (
-                <ColorRadioOutline
-                  key={index}
-                  isActive={primaryColor === color[0]}
-                >
+                <ColorRadioOutline key={index} isActive={isActive}>
                   <ColorRadio
-                    color={color[1].main}
-                    onClick={() => handleChangePrimary(color[0])}
-                  />
-                </ColorRadioOutline>
-              );
-            })}
-          </Stack>
-        </SettingGroup>
-        <SettingGroup>
-          <SettingTitle>Warna Sekunder</SettingTitle>
-          <Stack>
-            {Object.entries(colors).map((color, index) => {
-              return (
-                <ColorRadioOutline
-                  key={index}
-                  isActive={secondaryColor === color[0]}
-                >
-                  <ColorRadio
-                    color={color[1].main}
-                    onClick={() => handleChangeSecondary(color[0])}
+                    primary={opt.primary}
+                    secondary={opt.secondary}
+                    onClick={() =>
+                      handleChangeColor(opt.primary, opt.secondary)
+                    }
                   />
                 </ColorRadioOutline>
               );
@@ -193,7 +188,7 @@ const ThemeSettings: React.FC<ThemeSettingsProps> = ({ isOpen, onClose }) => {
               <FontRadioOutline isActive={font === "inter"}>
                 <FontRadio />
               </FontRadioOutline>
-              <FontOption family="'Inter', sans-serif">Inter</FontOption>
+              <p>Inter</p>
             </Stack>
             <Stack
               style={{ cursor: "pointer" }}
@@ -202,7 +197,7 @@ const ThemeSettings: React.FC<ThemeSettingsProps> = ({ isOpen, onClose }) => {
               <FontRadioOutline isActive={font === "dmSans"}>
                 <FontRadio />
               </FontRadioOutline>
-              <FontOption family="'DM Sans', sans-serif">DM Sans</FontOption>
+              <p>DM Sans</p>
             </Stack>
             <Stack
               style={{ cursor: "pointer" }}
@@ -211,7 +206,7 @@ const ThemeSettings: React.FC<ThemeSettingsProps> = ({ isOpen, onClose }) => {
               <FontRadioOutline isActive={font === "poppins"}>
                 <FontRadio />
               </FontRadioOutline>
-              <FontOption family="'Poppins', sans-serif">Poppins</FontOption>
+              <p>Poppins</p>
             </Stack>
           </Stack>
         </SettingGroup>

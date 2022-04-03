@@ -35,7 +35,7 @@ const HeroCaption = styled.p`
 const JobText = styled.p`
   color: ${(p) =>
     p.theme.colorScheme === "dark"
-      ? p.theme.colors.palettes.darkGray.dark
+      ? p.theme.colors.palettes.lightGray.main
       : p.theme.colors.palettes.darkGray.dark};
   font-size: 20px;
   margin-bottom: ${(p) => p.theme.spacing.sm};

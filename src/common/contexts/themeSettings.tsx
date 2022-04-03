@@ -15,7 +15,7 @@ type ThemeSettingsCtxType = {
 export const ThemeSettingsContext = createContext<ThemeSettingsCtxType>({
   colorScheme: "light",
   primaryColor: "blue",
-  secondaryColor: "red",
+  secondaryColor: "lightBlue",
   font: "inter",
   setFont: () => {},
   toggleColorScheme: () => {},

@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme, Color } from "styled-components";
 import baseTheme from "./base-theme";
 import { DeepPartial } from "common/types/common";
 import colors from "./colors";
@@ -8,9 +8,14 @@ const generateColor = (
   secondary: string,
   extendedTheme: DeepPartial<DefaultTheme>
 ) => {
+  const _colors = { ...colors } as Record<
+    string,
+    Color & { contrastText: string }
+  >;
+
   return {
-    primary: colors[primary],
-    secondary: colors[secondary],
+    primary: _colors[primary],
+    secondary: _colors[secondary],
     background: {
       ...baseTheme.colors.background,
       ...extendedTheme.colors?.background,
