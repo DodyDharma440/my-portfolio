@@ -65,7 +65,7 @@ const HeroSection = () => {
                 </HeroCaption>
                 <Stack>
                   <Button size="md">Lihat Project</Button>
-                  <Button color="secondary" size="md">
+                  <Button variant="outlined" size="md">
                     Kontak
                   </Button>
                 </Stack>

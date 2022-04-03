@@ -94,7 +94,7 @@ const Navbar = forwardRef<HTMLElement>((props, ref) => {
                 <IconButton
                   size="xs"
                   onClick={themeSettingsHandlers.open}
-                  color="transparent"
+                  variant="transparent"
                 >
                   <Icon size={18} icon={MenuAlt3Icon} />
                 </IconButton>
